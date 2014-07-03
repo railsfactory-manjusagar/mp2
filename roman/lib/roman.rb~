@@ -1,8 +1,8 @@
 class Roman
 
-  def self.convert(number)
+  def convert(number)
      if number == 1
-      puts "I"
+          print "I"
            elsif number == 2
             print "II"
             elsif number == 3
@@ -55,4 +55,5 @@ class Roman
 
 
 
-
+obj = Roman.new
+obj.convert(39)
