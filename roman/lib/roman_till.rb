@@ -1,0 +1,57 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+elsif number < 500
+     div = number/100
+     for i in 1..div
+      print "C"
+     end
+     rem = number % 100
+      if rem > 50
+       print "L"
+     rem1 = rem - 50
+      div2 = rem1 / 10 
+        for i in 1..div2
+         print "X"
+        end
+       rem2 = div2 % 10
+          if rem2 == 1
+            puts "I"
+           elsif rem2 == 2
+            puts "II"
+            elsif rem2 == 3
+             puts "III"
+             elsif rem2 == 4
+              puts "IV"
+             elsif rem2 == 5
+              puts "V"
+             elsif rem == 6
+              puts "VI"
+             elsif rem == 7
+              puts "VII"
+             elsif rem == 8
+              puts "VIII"
+             elsif rem == 9
+              puts "IX"  
+        end
+       end
+   
+       end
+  
+        end
+
+
+
+obj = Roman.new
+ obj.convert(496)
