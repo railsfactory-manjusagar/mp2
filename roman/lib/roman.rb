@@ -22,6 +22,8 @@ class Roman
                "IX" 
              elsif number == 10
                "X" 
+             elsif number == 1000
+               "M"
      elsif number < 50
        div = number / 10
        for i in 1..div
@@ -109,7 +111,42 @@ class Roman
               str + "VIII"
              elsif rem4 == 9
               str + "IX"   
-         end       
+         end 
+     elsif number < 1000
+          str +="D"
+          num1 = number - 500
+          num2 = num1/100
+          for i in 1..num2
+           str +="C"
+          end
+         num3 = num1 - 100*num2
+          str +="L"
+          num4 = num3 - 50
+          num5 = num4/10
+       for i in 1..num5
+          str +="X"
+       end
+           rem5 = num4%10
+           if rem5 == 1
+            str + "I"
+           elsif rem5  == 2
+             str + "II"
+            elsif rem5 == 3
+             str + "III"
+             elsif rem5 == 4
+              str + "IIII"
+             elsif rem5 == 5
+              str + "V"
+             elsif rem5 == 6
+              str + "VI"
+             elsif rem5 == 7
+              str + "VII"
+             elsif rem5 == 8
+              str + "VIII"
+             elsif rem5 == 9
+              str + "IX"   
+         end 
+                            
         end
         
      end
