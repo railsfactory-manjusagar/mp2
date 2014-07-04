@@ -24,6 +24,7 @@ class TestRoman < Test::Unit::TestCase
     assert_equal ' XXXXVI',Roman.convert(46)
     assert_equal 'LXXV',Roman.convert(75)
     assert_equal 'LXXXVII',Roman.convert(87)
+    assert_equal ' CCCLXXXXVII',Roman.convert(397)
   end
 
 

@@ -76,13 +76,45 @@ class Roman
              elsif rem1 == 9
               str + "IX"   
          end       
-         
-
-     end
-
+      elsif number < 500  
+           
+          div2 = number / 100  
+          for i in 1..div2
+           str +="C"
+          end
+         num1 = number - 100*div2
+           str +="L"
+         num2 = num1 - 50
        
+         div3 = num2/10
+         for i in 1..div3
+         str +="X"
+         end
+         rem4 = num2%10
+         if rem4 == 1
+            str + "I"
+           elsif rem4  == 2
+             str + "II"
+            elsif rem4 == 3
+             str + "III"
+             elsif rem4 == 4
+              str + "IIII"
+             elsif rem4 == 5
+              str + "V"
+             elsif rem4 == 6
+              str + "VI"
+             elsif rem4 == 7
+              str + "VII"
+             elsif rem4 == 8
+              str + "VIII"
+             elsif rem4 == 9
+              str + "IX"   
+         end       
+        end
+        
+     end
   end
- end
+ 
 
 
 
