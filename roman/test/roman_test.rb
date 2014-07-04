@@ -1,4 +1,4 @@
-require_relative '../lib/roman'
+require '../lib/roman'
 require 'test/unit'
 
 
@@ -22,6 +22,8 @@ class TestRoman < Test::Unit::TestCase
     assert_equal ' XIIII',Roman.convert(14)
     assert_equal ' XXXVII',Roman.convert(37)
     assert_equal ' XXXXVI',Roman.convert(46)
+    assert_equal 'LXXV',Roman.convert(75)
+    assert_equal 'LXXXVII',Roman.convert(87)
   end
 
 
