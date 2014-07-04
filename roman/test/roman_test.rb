@@ -19,13 +19,13 @@ class TestRoman < Test::Unit::TestCase
     assert_equal 'VII',Roman.convert(7)
     assert_equal 'IX',Roman.convert(9)
     assert_equal 'X',Roman.convert(10)
-    assert_equal ' XIIII',Roman.convert(14)
-    assert_equal ' XXXVII',Roman.convert(37)
-    assert_equal ' XXXXVI',Roman.convert(46)
+    assert_equal 'XIV',Roman.convert(14)
+    assert_equal 'XXXVII',Roman.convert(37)
+    assert_equal 'XXXXVI',Roman.convert(46)
     assert_equal 'LXXV',Roman.convert(75)
     assert_equal 'LXXXVII',Roman.convert(87)
-    assert_equal ' CCCLXXXXVII',Roman.convert(397)
-    assert_equal ' DCCLXXXXIX' ,Roman.convert(799)
+    assert_equal 'CCCLXXXXVII',Roman.convert(397)
+    assert_equal 'DCCLXXXXIX' ,Roman.convert(799)
     assert_equal 'M',Roman.convert(1000)
   end
 
