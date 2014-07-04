@@ -1,49 +1,52 @@
 class Roman
 
-  def convert(number)
+  def self.convert(number)
+         str = " "  
      if number == 1
-          print "I"
+           "I"
            elsif number == 2
-            print "II"
+             "II"
             elsif number == 3
-             print "III"
+              "III"
              elsif number == 4
-              print "IV"
+              "IV"
              elsif number == 5
-              print "V"
+              "V"
              elsif number == 6
-              print "VI"
+              "VI"
              elsif number == 7
-              print "VII"
+              "VII"
              elsif number == 8
-              print "VIII"
+               "VIII"
              elsif number == 9
-              print "IX"  
+               "IX" 
+             elsif number == 10
+               "X" 
      elsif number < 50
        div = number / 10
        for i in 1..div
-         print "X"
+         str +="X"
        end
        rem = number % 10
               
          if rem == 1
-            puts "I"
+            str + "I"
            elsif rem == 2
-            puts "II"
+             str + "II"
             elsif rem == 3
-             puts "III"
+             str + "III"
              elsif rem == 4
-              puts "IV"
+              str + "IIII"
              elsif rem == 5
-              puts "V"
+              str + "V"
              elsif rem == 6
-              puts "VI"
+              str + "VI"
              elsif rem == 7
-              puts "VII"
+              str + "VII"
              elsif rem == 8
-              puts "VIII"
+              str + "VIII"
              elsif rem == 9
-              puts "IX"   
+              str + "IX"   
          end       
 
 
@@ -55,5 +58,4 @@ class Roman
 
 
 
-obj = Roman.new
-obj.convert(39)
+
