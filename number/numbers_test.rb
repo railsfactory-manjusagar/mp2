@@ -15,6 +15,7 @@ class TestNumbers < Test::Unit::TestCase
     assert_equal '32nd',Numbers.convert(32)
     assert_equal '43rd',Numbers.convert(43)
     assert_equal '54th',Numbers.convert(54)
+    assert_equal '114th',Numbers.convert(114)
   end
 
 
