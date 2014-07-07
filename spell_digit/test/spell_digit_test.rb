@@ -20,7 +20,11 @@ class TestSpell_digit < Test::Unit::TestCase
    assert_equal "ninehundred ninety nine",Spell_digit.convert(999)
    assert_equal "twothousand twohundrend twenty",Spell_digit.convert(2220)
    assert_equal "threethousand threehundrend eleven",Spell_digit.convert(3311)
- 
+   assert_equal "fivethousand",Spell_digit.convert(5000)
+   assert_equal "fivethousand fivehundrend ninety nine",Spell_digit.convert(5599)
+   assert_equal "ninethousand ninehundrend ninety nine",Spell_digit.convert(9999)
+   assert_equal "eleventhousand",Spell_digit.convert(11000)
+   assert_equal "twentytwothousand twohundrend twoty two",Spell_digit.convert(22222)
    
    
   end
