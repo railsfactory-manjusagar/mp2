@@ -23,8 +23,14 @@ class TestSpell_digit < Test::Unit::TestCase
    assert_equal "fivethousand",Spell_digit.convert(5000)
    assert_equal "fivethousand fivehundrend ninety nine",Spell_digit.convert(5599)
    assert_equal "ninethousand ninehundrend ninety nine",Spell_digit.convert(9999)
-   assert_equal "eleventhousand",Spell_digit.convert(11000)
-   assert_equal "twentytwothousand twohundrend twoty two",Spell_digit.convert(22222)
+   assert_equal "tenthousand",Spell_digit.convert(10000)
+   assert_equal "twentytwothousand twohundrend twenty two",Spell_digit.convert(22222)
+   assert_equal "thirtythreethousand ninehundrend thirty three",Spell_digit.convert(33933)
+   assert_equal "sixtysixthousand threehundrend sixty nine",Spell_digit.convert(66369)
+   assert_equal "twentythree thousand",Spell_digit.convert(23000)
+   assert_equal "fifty thousand",Spell_digit.convert(50000)
+   assert_equal "onelakh twentythreethousand thirty three",Spell_digit.convert(123333)
+   
    
    
   end
