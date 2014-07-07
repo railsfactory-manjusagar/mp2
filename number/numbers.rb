@@ -3,13 +3,13 @@ class Numbers
   def self.convert(number)
     num = number % 10
     if num == 1
-      return "#{num}st"
+      return "#{number}st"
     elsif num == 2
-      return "#{num}nd"
+      return "#{number}nd"
     elsif num == 3
-      return "#{num}rd"
+      return "#{number}rd"
     elsif num == 4 || num == 0
-      return "#{num}th"
+      return "#{number}th"
   end
   
   end
