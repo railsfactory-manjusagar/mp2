@@ -41,7 +41,7 @@ class Todolist
 
     
    def self.delete(num)
-     @complete.delete(num-1)
+     @complete.delete_at(num-1)
      return @complete.count
    end
 
