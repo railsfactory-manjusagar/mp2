@@ -1,16 +1,17 @@
+
 class Storage
-	def self.dump(filename)
-		fptr = File.open("todo.txt","w")
-	    fptr.write("hello world")
-	    
+	def self.dump
+	    fptr = File.open("todo.txt","w")
+             a= "hello world"
+	    fptr.write(a)
+	    return a
 	end
-		def self.load
-         str = ""
+         def self.load
+         str = []
          fptr = File.open("todo.txt","r")
          str = fptr.readlines
-    
-         return str	
-		end
+         return str.join	
+	end
 end
 
  
