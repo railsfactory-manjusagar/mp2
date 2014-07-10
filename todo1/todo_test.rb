@@ -37,11 +37,18 @@ class Test_todo < Test::Unit::TestCase
    assert_equal 0,Todolist.completed
    assert_equal 4,Todolist.list
   end
+
+  def test_add5
+   assert_equal 5,Todolist.add('ddffd')
+   assert_equal 5,Todolist.pending
+   assert_equal 0,Todolist.completed
+   assert_equal 5,Todolist.list
+  end
  def test_complete3
    assert_equal 1,Todolist.complete(1)
    assert_equal 2,Todolist.complete(2)
    assert_equal 2,Todolist.show_completed
-   assert_equal 2,Todolist.show_pending
+   assert_equal 3,Todolist.show_pending
  end
   
   def test_modify
