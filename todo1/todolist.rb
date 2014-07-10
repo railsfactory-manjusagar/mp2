@@ -56,17 +56,17 @@ class Todolist
    a = 0
    a = @pending[num-1]
    @complete << a
-   @pending[num-1].clear
+   @pending.delete_at(num-1)
    return @complete.count
    end
 
 
-   def show_pending
+   def self.show_pending
     return @pending.size
    end
 
 
-   def show_completed
+   def self.show_completed
       return @complete.size
    end
 

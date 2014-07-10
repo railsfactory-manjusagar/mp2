@@ -40,7 +40,8 @@ class Test_todo < Test::Unit::TestCase
  def test_complete3
    assert_equal 1,Todolist.complete(1)
    assert_equal 2,Todolist.complete(2)
-   
+   assert_equal 2,Todolist.show_completed
+   assert_equal 2,Todolist.show_pending
  end
   
   def test_modify
@@ -52,7 +53,12 @@ class Test_todo < Test::Unit::TestCase
    assert_equal 1,Todolist.delete(1)
   
   end
- 
-end
+ def test_pending
+    assert_equal 3,Todolist.show_pending
+ end
   
+  def test_completed
+   assert_equal 2,Todolist.show_completed 
+end
+  end
 
