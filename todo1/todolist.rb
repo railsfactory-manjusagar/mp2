@@ -1,88 +1,75 @@
-  $pending = []
-  $completed = []
-  Stodo = []
 class Todolist
- attr_accessor :filename,:todo,:pending,:completed,:i
-   def initialize(filename)
-   $filename = filename
-    return filename
-   end
-    
-   
-   def empty_list
-      $pending.clear 
-      $complete.clear
-      $todo.clear
-      $pending.empty?
-   end
-   
-  def add(item)
-    $todo = [] 
-   $pending = []
-   $complete = []
-   $temp = [] 
+attr_accessor :filename,:todo,:pending,:completed
+$todo=[]
+$pending=[]
+$completed=[]
 
-     $pending << item
-     return $pending
-     
-   end
-   
-
- 
-   def list 
-     $todo = $pending + $complete
-     return $todo.length
-   end
-
-  
-   def pending
-     return $pending.length
-   end
-
- 
-   def completed
-     return $complete.length
-   end
-
-    
-   def delete(num)
-     $temp << $complete[num-1]
-     $complete.delete_at(num-1)
-        return $complete.length
-   end
-
-
-   def modify(num,value)
-   $pending[num] = value
-   return $pending[num]
-   end
-
-
-   def complete(num)
-   a = 0
-   a = $pending[num-1]
-   $complete << a
-   $pending.delete_at(num-1)
-   return $complete.count
-   end
-
-
-   def show_pending
-    return $pending.size
-   end
-
-
-   def show_completed
-      return $complete.length
-   end
-  
-   def save
-    f = File.open($filename,"w")
-    str = ""
-    str = $todo.join
-    t = f.write(str)
-    return str
-   end
-  def load
-  end
+def initialize(filename)
+$filename=filename
 end
+
+def empty
+$todo.clear
+$pending.clear
+$completed.clear
+return $pending.empty?
+end
+
+def add(item)
+$pending << item
+return $pending.size
+end
+
+def pending
+return $pending.size
+end
+
+def complete(linenumber)
+$completed << $pending[linenumber-1]
+$pending.delete_at(linenumber - 1)
+return $completed.size
+end
+
+def completed
+return $completed.size
+end
+
+def list
+$todo = $pending + $completed
+return $todo.size
+end
+
+
+def delete(linenumber)
+$completed.delete_at(linenumber - 1)
+return $completed.size
+end
+
+
+def modify(linenumber,item)
+$pending.delete_at(linenumber-1)
+$pending << item
+return $pending.size
+end
+
+
+
+def show_pending(linenumber)
+return $pending[linenumber-1]
+end
+
+def show_completed(linenumber)
+return $completed[linenumber-1]
+end
+
+def save
+ 
+end
+
+def load
+ 
+end
+ 
+end
+
+
