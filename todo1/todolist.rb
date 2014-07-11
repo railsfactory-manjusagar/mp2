@@ -1,84 +1,88 @@
+  $pending = []
+  $completed = []
+  Stodo = []
 class Todolist
  attr_accessor :filename,:todo,:pending,:completed,:i
-   def self.initialize(filename)
-   @filename = filename
+   def initialize(filename)
+   $filename = filename
     return filename
    end
     
-   @todo = [] 
-   @pending = []
-   @complete = []
-   @temp = [] 
-
-   def self.empty_list
-      @pending.clear 
-      @complete.clear
-      @todo.clear
-      @pending.empty?
-      
+   
+   def empty_list
+      $pending.clear 
+      $complete.clear
+      $todo.clear
+      $pending.empty?
    end
    
-  def self.add(item)
-     @pending << item
-     return @pending.count
+  def add(item)
+    $todo = [] 
+   $pending = []
+   $complete = []
+   $temp = [] 
+
+     $pending << item
+     return $pending
      
    end
    
 
  
-   def self.list 
-     @todo = @pending + @complete
-     return @todo.length
+   def list 
+     $todo = $pending + $complete
+     return $todo.length
    end
 
   
-   def self.pending
-     return @pending.length
+   def pending
+     return $pending.length
    end
 
  
-   def self.completed
-     return @complete.length
+   def completed
+     return $complete.length
    end
 
     
-   def self.delete(num)
-     @temp << @complete[num-1]
-     @complete.delete_at(num-1)
-        return @complete.length
+   def delete(num)
+     $temp << $complete[num-1]
+     $complete.delete_at(num-1)
+        return $complete.length
    end
 
 
-   def self.modify(num,value)
-   @pending[num] = value
-   return @pending[num]
+   def modify(num,value)
+   $pending[num] = value
+   return $pending[num]
    end
 
 
-   def self.complete(num)
+   def complete(num)
    a = 0
-   a = @pending[num-1]
-   @complete << a
-   @pending.delete_at(num-1)
-   return @complete.count
+   a = $pending[num-1]
+   $complete << a
+   $pending.delete_at(num-1)
+   return $complete.count
    end
 
 
-   def self.show_pending
-    return @pending.size
+   def show_pending
+    return $pending.size
    end
 
 
-   def self.show_completed
-      return @complete.length
+   def show_completed
+      return $complete.length
    end
   
-   def self.save
-    f = File.open(@filename,"w")
+   def save
+    f = File.open($filename,"w")
     str = ""
-    str = @complete.join
+    str = $todo.join
     t = f.write(str)
     return str
-
    end
+  def load
+  end
 end
