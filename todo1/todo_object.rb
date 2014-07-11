@@ -1,8 +1,8 @@
 class Todolist
  attr_accessor :filename,:todo,:pending,:completed,:i
    def self.initialize(filename)
+   @filename = ""
    @filename = filename
-    return filename
    end
     
    @todo = [] 
@@ -18,67 +18,75 @@ class Todolist
       
    end
    
-  def self.add(item)
+  def add(item)
      @pending << item
-     return @pending.count
+     puts @pending
      
    end
    
 
  
-   def self.list 
+   def list 
      @todo = @pending + @complete
-     return @todo.length
+     puts @todo
    end
 
   
-   def self.pending
-     return @pending.length
+   def pending
+     puts @pending
    end
 
  
-   def self.completed
-     return @complete.length
+   def completed
+     puts @complete
    end
 
     
-   def self.delete(num)
+   def delete(num)
      @temp << @complete[num-1]
      @complete.delete_at(num-1)
-        return @complete.length
+       puts @complete
    end
 
 
-   def self.modify(num,value)
+   def modify(num,value)
    @pending[num] = value
-   return @pending[num]
+   puts @pending
    end
 
 
-   def self.complete(num)
+   def complete(num)
    a = 0
    a = @pending[num-1]
    @complete << a
    @pending.delete_at(num-1)
-   return @complete.count
+   puts @complete
    end
 
 
-   def self.show_pending
+   def show_pending
     return @pending.size
    end
 
 
-   def self.show_completed
-      return @complete.length
+   def show_completed
+      return @complete.count
    end
-  
-   def self.save
-    f = File.open(@filename,"w")
-    str = ""
-    str = @complete.join
-    t = f.write(str)
-    return str
 
-   end
+
 end
+
+ obj = Todolist.new("ms.txt")
+ obj.add(ms)
+ obj.add(sm)
+ obj.add(manju)
+ obj.add(sagar)
+ obj.add(manju sagar)
+ obj.list
+ obj.pending
+ obj.completed
+ obj.delete(1)
+ obj.modify(1,"jd")
+ obj.complete(2)
+ obj.show_pending
+ obj.show_completed

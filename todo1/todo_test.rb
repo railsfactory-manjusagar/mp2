@@ -49,23 +49,36 @@ class Test_todo < Test::Unit::TestCase
    assert_equal 2,Todolist.complete(2)
    assert_equal 2,Todolist.show_completed
    assert_equal 3,Todolist.show_pending
+   assert_equal 5,Todolist.list
  end
   
   def test_modify
-   assert_equal 'sm',Todolist.modify(2,"sm")
+   assert_equal 'dc',Todolist.modify(2,"dc")
    assert_equal 'ap',Todolist.modify(1,"ap")
+   assert_equal 3,Todolist.show_pending
+   
   end
 
-  def test_delete
-   assert_equal 1,Todolist.delete(1)
-  
-  end
  def test_pending
     assert_equal 3,Todolist.show_pending
  end
   
   def test_completed
-   assert_equal 2,Todolist.show_completed 
+    assert_equal 2,Todolist.show_completed
 end
+
+  def test_delete
+   assert_equal 1,Todolist.delete(1)
+   assert_equal 1,Todolist.show_completed
+   assert_equal 4,Todolist.list
+   assert_equal 3,Todolist.show_pending
   end
+  def test_initialization
+    assert_equal "ms.txt",Todolist.initialize("ms.txt")
+  end
+
+  def test_save
+  assert_equal 10,Todolist.save
+  end
+end
 
