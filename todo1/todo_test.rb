@@ -1,86 +1,161 @@
-load 'todolist.rb'
+require_relative './todolist.rb'
 require 'test/unit'
-  
-class Test_todo < Test::Unit::TestCase
-  attr_accessor :t
-   $t = Todolist.new("ms.txt")
-   def test_aaempty1
-     assert_equal true,$t.empty_list
-     assert_equal 0,$t.pending
-     assert_equal 0,$t.list
-     assert_equal 0,$t.completed
-   end
-         puts $t.add("manju")
-   def test_add
-   assert_equal 1,$t.add('manju')
-   assert_equal 1,$t.pending
-   assert_equal 0,$t.completed
-   assert_equal 1,$t.list
-   end
-  
+class TestTodo < Test::Unit::TestCase
+ 
+
+def setup
+
+  @a = Todolist.new("ms.txt")
+ 
+end
+
+def teardown
+
+  @a=nil
+ 
+end
+
+
+ def test_zempty
+  @a.empty
+  assert_equal 0,@a.pending.size
+  assert_equal 0,@a.completed.size
+  assert_equal 0,@a.list.size
+ end
+
+
+
+  def test_add1
+   @a.empty
+   @a.add("one")
+   assert_equal 1,@a.list.size
+   assert_equal 1,@a.pending.size
+   assert_equal 0,@a.completed.size
+ end
+
+
+
   def test_add2
-   assert_equal 2,$t.add('sagar')
-   assert_equal 2,$t.pending
-   assert_equal 0,$t.completed
-   assert_equal 2,$t.list
-  end
-  
-  def test_add3
-   assert_equal 3,$t.add('ms')
-   assert_equal 3,$t.pending
-   assert_equal 0,$t.completed
-   assert_equal 3,$t.list
-  end
-
-
-  def test_add4
-   assert_equal 4,$t.add('sdjkcnk')
-   assert_equal 4,$t.pending
-   assert_equal 0,$t.completed
-   assert_equal 4,$t.list
-  end
-
-  def test_add5
-   assert_equal 5,$t.add('ddffd')
-   assert_equal 5,$t.pending
-   assert_equal 0,$t.completed
-   assert_equal 5,$t.list
-  end
- def test_complete6
-   assert_equal 1,$t.complete(1)
-   assert_equal 2,$t.complete(2)
-   assert_equal 2,$t.show_completed
-   assert_equal 3,$t.show_pending
-   assert_equal 5,$t.list
+   @a.empty
+   @a.add("one")
+   @a.add("two")
+   assert_equal 2,@a.list.size
+   assert_equal 2,@a.pending.size
+   assert_equal 0,@a.completed.size
  end
-  
-  def test_modify
-   assert_equal 'dc',$t.modify(2,"dc")
-   assert_equal 'ap',$t.modify(1,"ap")
-   assert_equal 3,$t.show_pending
-    assert_equal 5,$t.list
+
+
+
+ 
+  def test_complete
+  # precondition
+  @a.empty
+  @a.add("one")
+  #before state
+  assert_equal 1,@a.pending.size
+  assert_equal 0,@a.completed.size
+  assert_equal 1,@a.list.size
+
+
+   #action
+   @a.complete(1)
+
+   #after 
+   assert_equal 0,@a.pending.size
+   assert_equal 1,@a.completed.size
+   assert_equal 1,@a.list.size
   end
 
- def test_pending
-    assert_equal 3,$t.show_pending
+
+
+def test_delete
+  # precondition
+  @a.empty
+  @a.add("one")
+  @a.complete(1)
+
+ 
+#before state
+assert_equal 0,@a.pending.size
+assert_equal 1,@a.completed.size
+assert_equal 1,@a.list.size
+
+  @a.delete(1)
+
+   assert_equal 0,@a.pending.size
+   assert_equal 0,@a.completed.size
+   assert_equal 0,@a.list.size
  end
-  
-  def test_completed
-    assert_equal 2,$t.show_completed
+
+
+
+
+ def test_modify
+   @a.empty
+#precondition
+   assert_equal 0,@a.pending.size
+   assert_equal 0,@a.completed.size
+   assert_equal 0,@a.list.size
+   @a.add("one")
+   @a.add("two")
+   @a.add("three")
+   assert_equal 3,@a.pending.size
+   assert_equal 0,@a.completed.size
+   assert_equal 3,@a.list.size
+   
+   assert_equal "merge",@a.modify(3,"merge")
+   assert_equal "read",@a.modify(2,"read")
+   assert_equal 3,@a.pending.size
+   assert_equal 0,@a.completed.size
+   assert_equal 3,@a.list.size
+
+  @a.complete(1)
+   assert_equal 2,@a.pending.size
+   assert_equal 1,@a.completed.size
+   assert_equal 3,@a.list.size
+ end
+ 
+
+  def test_pend
+    @a.empty
+    assert_equal 0,@a.pending.size
+   assert_equal 0,@a.completed.size
+   assert_equal 0,@a.list.size
+    @a.add("hi")
+    @a.add("hello")
+    @a.add("hwru")
+   assert_equal 3,@a.pending.size
+   @a.complete(2)
+    assert_equal 2,@a.pending.size
+   assert_equal 1,@a.completed.size
+   assert_equal 3,@a.list.size
+   
+  end
+
+  def test_qcompleted
+
+   @a.empty
+    assert_equal 0,@a.pending.size
+   assert_equal 0,@a.completed.size
+   assert_equal 0,@a.list.size
+    @a.add("google")
+    @a.add("empty")
+    @a.add("yahoo")
+   assert_equal 3,@a.pending.size
+   @a.complete(2)
+    assert_equal 2,@a.pending.size
+   assert_equal 1,@a.completed.size
+   assert_equal 3,@a.list.size
+ 
+ end
+  def test_read
+       @a.empty
+     assert_equal 0,@a.pending.size
+     assert_equal 0,@a.completed.size
+     assert_equal 0,@a.list.size 
+  assert_equal 2,@a.load1.size
+ 
+
+  end
+
 end
-
-  def test_delete
-   assert_equal 1,$t.delete(1)
-   assert_equal 1,$t.show_completed
-   assert_equal 4,$t.list
-   assert_equal 3,$t.show_pending
-  end
-  def test_initialization
-    assert_equal "ms.txt",$t.initialize("ms.txt")
-  end
-
-  def test_save11
-  assert_equal 10,$t.save
-  end
-end
-
