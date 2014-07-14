@@ -121,9 +121,9 @@ assert_equal 1,@a.list.size
     assert_equal 0,@a.pending.size
    assert_equal 0,@a.completed.size
    assert_equal 0,@a.list.size
-    @a.add("hi")
-    @a.add("hello")
-    @a.add("hwru")
+    @a.add("hi #undone")
+    @a.add("hello #undone")
+    @a.add("hwru #undone")
    assert_equal 3,@a.pending.size
    @a.complete(2)
     assert_equal 2,@a.pending.size
@@ -138,9 +138,9 @@ assert_equal 1,@a.list.size
     assert_equal 0,@a.pending.size
    assert_equal 0,@a.completed.size
    assert_equal 0,@a.list.size
-    @a.add("google")
-    @a.add("empty")
-    @a.add("yahoo")
+    @a.add("google #undone")
+    @a.add("empty #undone")
+    @a.add("yahoo #undone")
    assert_equal 3,@a.pending.size
    @a.complete(2)
     assert_equal 2,@a.pending.size
@@ -150,12 +150,28 @@ assert_equal 1,@a.list.size
  end
   def test_read
        @a.empty
-     assert_equal 0,@a.pending.size
+       @a.add("manju")
+       @a.add("sagar")
+     assert_equal 2,@a.pending.size
      assert_equal 0,@a.completed.size
-     assert_equal 0,@a.list.size 
-  assert_equal 2,@a.load1.size
- 
-
+      @a.complete(1)
+     assert_equal 1,@a.pending.size
+     assert_equal 1,@a.completed.size
+     assert_equal 2,@a.list.size 
+   assert_equal 2,@a.load1.size
   end
+ 
+ def test_save1
+  @a.empty
+     @a.add("man #undone")
+       @a.add("sag #undone")
+     assert_equal 2,@a.pending.size
+     assert_equal 0,@a.completed.size
+      @a.complete(1)
+     assert_equal 1,@a.pending.size
+     assert_equal 1,@a.completed.size
+     assert_equal 2,@a.list.size 
+     assert_equal 2,@a.save.size
+ end
 
 end

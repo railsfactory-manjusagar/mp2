@@ -27,8 +27,11 @@ class Todolist
 
 	def complete(num)
 	@completed << @pending[num - 1]
+          @completed.each do |s|
+          s.gsub!(/#undone/,"#done")
+           end
 	@pending.delete_at(num - 1)
-	@completed
+	return @completed
 	end
 
 	#def self.incomplete(num)
@@ -60,6 +63,7 @@ class Todolist
 	end
 
 	def show_completed(num)
+         
  	return @completed[num - 1]
 	end
 
@@ -80,5 +84,17 @@ class Todolist
         return @pending
         
      end
+
+
+      def save
+        f= File.open(@filename,"w")
+        str = ""
+        str = @todo
+        f.puts(str)
+        f.close
+        return str
+         
+      end 
+              
 end
 

@@ -1,5 +1,2 @@
-google #undone
-yahoo #done
-gmail #done
-manju #undone
-
+sag #undone
+man #done
