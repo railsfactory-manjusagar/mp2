@@ -21,14 +21,16 @@ class Todolist
 	end
 
 	def add(title)
-          @pending << title
+          @pending << title + " #undone"
           @pending
 	end
 
 	def complete(num)
 	@completed << @pending[num - 1]
-          
-	@pending.delete_at(num - 1)
+          @completed.each do |s|
+          s.gsub!(/#undone/,"#done")
+           end
+         @pending.delete_at(num - 1)
 	return @completed
 	end
 
@@ -81,14 +83,7 @@ class Todolist
         
      end
    
-      def complete9(num)
-        @completed << @pending[num - 1]
-        @completed.each do |s|
-          s.gsub!(/#undone/,"#done")
-           end
-         @pending.delete_at(num-1)
-      end
-
+     
 
       def save
         f= File.open(@filename,"w")
@@ -103,7 +98,7 @@ class Todolist
      def save_to_file(filename)
        f = File.open(filename,"w")
         str = ""
-       str = @todo
+       str = @todo 
        f.puts(str)
         f.close
      end

@@ -129,39 +129,39 @@ assert_equal 1,@a.list.size
    assert_equal 3,@a.list.size
  
  end
-  def test_read
-       @a.empty
-       @a.add("manju #undone")
-       @a.add("sagar #undone")
-     assert_equal 2,@a.pending.size
-     assert_equal 0,@a.completed.size
-      @a.complete9(1)
-     assert_equal 1,@a.pending.size
-     assert_equal 1,@a.completed.size
-     assert_equal 2,@a.list.size 
-   assert_equal 2,@a.load1.size
-  end
+  
  
  def test_save1
   @a.empty
-     @a.add("man #undone")
-       @a.add("sag #undone")
+     @a.add("man ")
+       @a.add("sag ")
      assert_equal 2,@a.pending.size
      assert_equal 0,@a.completed.size
-      @a.complete9(1)
+      @a.complete(1)
      assert_equal 1,@a.pending.size
      assert_equal 1,@a.completed.size
      assert_equal 2,@a.list.size 
      assert_equal 2,@a.save.size
  end
-   
-  def test_save_to_file
-    @a.empty
-    @a.add("man #undone")
-       @a.add("sag #undone")
+   def test_read
+       @a.empty
+       @a.add("manju ")
+       @a.add("sagar ")
      assert_equal 2,@a.pending.size
      assert_equal 0,@a.completed.size
-      @a.complete9(1)
+      @a.complete(1)
+     assert_equal 1,@a.pending.size
+     assert_equal 1,@a.completed.size
+     assert_equal 2,@a.list.size 
+   assert_equal 2,@a.load1.size
+  end
+  def test_save_to_file
+    @a.empty
+    @a.add("man")
+       @a.add("sag ")
+     assert_equal 2,@a.pending.size
+     assert_equal 0,@a.completed.size
+      @a.complete(1)
      assert_equal 1,@a.pending.size
      assert_equal 1,@a.completed.size
      assert_equal 2,@a.list.size 
